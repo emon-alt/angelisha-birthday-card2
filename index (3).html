@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Angelisha!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet"/>
+  <style>
+    /* Confetti animation */
+    @keyframes confetti {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(800px) rotate(360deg); opacity: 0; }
+    }
+    /* Carousel spin */
+    @keyframes spin {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(-360deg); }
+    }
+    body {
+      margin: 0;
+      font-family: 'Pacifico', cursive;
+      background: linear-gradient(to bottom, #fff5f8, #ffe4e1);
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+    }
+    .container {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+    }
+    h1 {
+      font-size: 3em;
+      margin: 10px 0;
+      color: #e91e63;
+    }
+    .emoji-bar {
+      font-size: 2em;
+      margin: 10px 0;
+    }
+    p {
+      font-size: 1.3em;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+    .confetti-piece {
+      position: absolute;
+      top: -10px;
+      width: 8px;
+      height: 8px;
+      background-color: hsl(calc(360 * var(--i) / 30), 80%, 60%);
+      opacity: 0.9;
+      animation: confetti linear infinite;
+      animation-duration: calc(3s + var(--i) * 0.2s);
+      left: calc(var(--i) * 3%);
+      border-radius: 2px;
+    }
+    .carousel {
+      width: 320px;
+      height: 320px;
+      margin: 40px auto;
+      perspective: 1000px;
+    }
+    .carousel__container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: spin 20s infinite linear;
+    }
+    .carousel__slide {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      top: 30px;
+      left: 30px;
+      transform: rotateY(calc(360deg / 4 * var(--i))) translateZ(400px);
+      backface-visibility: hidden;
+    }
+    .carousel__slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+    }
+    .footer-note {
+      margin-top: 30px;
+      font-size: 1.2em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Confetti pieces -->
+    <script>
+      const container = document.currentScript.parentElement;
+      for (let i = 0; i < 30; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.style.setProperty('--i', i);
+        container.appendChild(piece);
+      }
+    </script>
+    <div class="emoji-bar">🎉 🎂 🎈</div>
+    <h1>Happy Birthday, Angelisha!</h1>
+    <div class="emoji-bar">🎈 🎂 🎉</div>
+    <p>Today is all about celebrating you—your joy, your kindness, and every wonderful moment we share.</p>
+
+    <div class="carousel">
+      <div class="carousel__container">
+        <div class="carousel__slide" style="--i:0"><img src="selfie1.jpg" alt="Angelisha Photo 1"/></div>
+        <div class="carousel__slide" style="--i:1"><img src="selfie2.jpg" alt="Angelisha Photo 2"/></div>
+        <div class="carousel__slide" style="--i:2"><img src="selfie3.jpg" alt="Angelisha Photo 3"/></div>
+        <div class="carousel__slide" style="--i:3"><img src="selfie4.jpg" alt="Angelisha Photo 4"/></div>
+      </div>
+    </div>
+
+    <p class="footer-note">Wishing you a day as amazing as you are! 💖</p>
+  </div>
+</body>
+</html>
